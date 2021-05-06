@@ -1,11 +1,12 @@
 import React, { useCallback } from "react";
 import { useDispatch, useStore } from "react-redux";
+
+import { Input } from "./Input";
+
 import { Message } from "../models";
 import { IRootState } from "../store";
 import { ChatActionsType } from "../store/actions";
-
 import { Conversation } from "./Conversation";
-import { Input } from "./Input";
 
 export const Chat: React.FC = () => {
   const store: IRootState = useStore().getState();

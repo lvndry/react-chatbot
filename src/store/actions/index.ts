@@ -1,2 +1,2 @@
-export * from "./chatAction";
-export * from "./contactsActions";
+export * from "./chatActions";
+export * from "./contactActions";

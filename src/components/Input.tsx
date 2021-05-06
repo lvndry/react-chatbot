@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { PayloadAction } from "typesafe-actions";
+import React, { useState } from "react";
+
 import { Message } from "../models";
 
 interface IOwnProps {
