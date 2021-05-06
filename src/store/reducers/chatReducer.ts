@@ -12,8 +12,6 @@ const initialState: IChatState = {
 };
 
 export const chatReducer = (state = initialState, action: TChatActions) => {
-  console.log(action.type);
-
   switch (action.type) {
     case getType(ChatActions.addMessage):
       return {

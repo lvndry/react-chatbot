@@ -1,12 +1,15 @@
 import React from "react";
 
 import { Chat } from "./Chat";
+import { ContactList } from "./ContactList";
 
-const Home = () => (
-  <div>
-    <h1>Hello world</h1>
-    <Chat />
-  </div>
-);
+const Home = () => {
+  return (
+    <div>
+      <Chat />
+      <ContactList />
+    </div>
+  );
+};
 
 export default Home;

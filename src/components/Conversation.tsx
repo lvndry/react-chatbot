@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { Message } from "../models";
-import { IRootState } from "../store";
+import { IRootState } from "../store/reducers";
 
 interface IOwnProps {
   messages: Message[];

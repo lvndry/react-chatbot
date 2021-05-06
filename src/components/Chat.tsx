@@ -4,7 +4,7 @@ import { useDispatch, useStore } from "react-redux";
 import { Input } from "./Input";
 
 import { Message } from "../models";
-import { IRootState } from "../store";
+import { IRootState } from "../store/reducers";
 import { ChatActionsType } from "../store/actions";
 import { Conversation } from "./Conversation";
 
