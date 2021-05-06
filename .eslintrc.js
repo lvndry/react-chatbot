@@ -13,5 +13,8 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  rules: {},
+  rules: {
+    "import/prefer-default-export": 0,
+    "arrow-body-style": 1,
+  },
 };

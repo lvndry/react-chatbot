@@ -15,6 +15,7 @@ const miniCssExtractPlugin = new MiniCssExtractPlugin({
 });
 
 module.exports = {
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -31,6 +32,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+      },
+      {
         test: /\.css$/,
         use: [
           devMode ? "style-loader" : MiniCssExtractPlugin.loader,
@@ -44,7 +49,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   devServer: {
     historyApiFallback: true,
