@@ -1,11 +1,26 @@
 import React, { useState, useEffect } from "react";
+import { PayloadAction } from "typesafe-actions";
+import { Message } from "../models";
 
-export const Input = () => {
+interface IOwnProps {
+  onSubmit: (message: Message) => any; // TODO remove any
+}
+
+interface IInputProps extends IOwnProps {}
+
+export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
   const [command, setCommand] = useState("");
 
-  useEffect(() => {
-    console.log(command);
-  }, [command]);
+  const handleSubmit = () => {
+    const message = new Message({
+      content: command,
+      sender: "landry",
+      date: new Date().toLocaleDateString("fr-FR"),
+    });
+
+    onSubmit(message);
+    setCommand("");
+  };
 
   return (
     <>
@@ -14,7 +29,9 @@ export const Input = () => {
         value={command}
         onChange={(event) => setCommand(event.target.value)}
       />
-      <button type="button"> Send </button>
+      <button type="button" onClick={() => handleSubmit()}>
+        Send
+      </button>
     </>
   );
 };
