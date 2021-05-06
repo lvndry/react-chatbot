@@ -18,6 +18,12 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
       date: new Date().toLocaleDateString("fr-FR"),
     });
 
+    const newMessageEvent = new CustomEvent<Message>("newMessage", {
+      detail: message,
+    });
+
+    document.dispatchEvent(newMessageEvent);
+
     onSubmit(message);
     setCommand("");
   };
