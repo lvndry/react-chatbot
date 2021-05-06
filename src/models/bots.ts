@@ -1,15 +1,41 @@
 import { Contact, ContactModel } from "./contact";
+import { Message } from "./message";
 
 export interface BotModel extends ContactModel {
-  command: string;
+  prefix: string;
 }
 
 export class Bot extends Contact {
-  public command: string;
+  public prefix: string;
 
   constructor(bot: BotModel) {
     super(bot);
 
-    this.command = bot.command;
+    this.prefix = bot.prefix;
+  }
+
+  parseCommand(command: string) {
+    if (command === "whoami") {
+      return new Message({
+        sender: this.name,
+        content: `Hi my name is ${this.name}`,
+      });
+    } else {
+      const pre = command[0];
+
+      switch (pre) {
+        case "$":
+          // do meme stuff
+          break;
+        case ">":
+          // do pen stuff
+          break;
+        case "@":
+          // do popcorn stuff
+          break;
+        default:
+          break;
+      }
+    }
   }
 }

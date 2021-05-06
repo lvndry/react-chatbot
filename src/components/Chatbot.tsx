@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 
 import Routes from "./routes";
 
-import { Bot, Contact } from "../models";
-import { contactActionsType } from "../store/actions";
+import { Bot, Contact, Message } from "../models";
+import { ChatActionsType, contactActionsType } from "../store/actions";
 
 export const Chatbot = () => {
   const dispatch = useDispatch();
@@ -12,16 +12,27 @@ export const Chatbot = () => {
   useEffect(() => {
     const contacts = [
       new Contact({ id: "0", name: "Me" }),
-      new Bot({ id: "1", name: "Meme bot", command: "$" }),
-      new Bot({ id: "2", name: "Pen bot", command: ">" }),
-      new Bot({ id: "3", name: "Popcorn bot", command: "@" }),
+      new Bot({ id: "1", name: "Meme bot", prefix: "$" }),
+      new Bot({ id: "2", name: "Pen bot", prefix: ">" }),
+      new Bot({ id: "3", name: "Popcorn bot", prefix: "@" }),
     ];
 
     dispatch({ type: contactActionsType.SET_CONTACTS, payload: contacts });
 
-    document.addEventListener("newMessage", ({ detail }: CustomEvent) => {
-      console.log(detail);
-    });
+    document.addEventListener(
+      "newMessage",
+      ({ detail }: CustomEvent<{ message: Message }>) => {
+        console.log(detail);
+        contacts.map((contact) => {
+          if (contact instanceof Bot) {
+            const message = contact.parseCommand(detail.message.content);
+            if (message) {
+              dispatch({ type: ChatActionsType.ADD_MESSAGE, payload: message });
+            }
+          }
+        });
+      }
+    );
   }, []);
 
   return <Routes />;
