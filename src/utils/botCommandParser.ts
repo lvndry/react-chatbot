@@ -105,6 +105,7 @@ export const ImageBotParser = async (sender: string, command: string) => {
       return message;
     default:
       message.content = "Invalid command";
+      message.type = "text";
       return message;
   }
 };

@@ -55,7 +55,7 @@ const MessageBubble = styled.div`
   overflow-wrap: break-word;
   margin-bottom: 2em;
 
-  padding: 1em 1.5em 0em 1.5em;
+  padding: 1em 1.5em 0.5em 1.5em;
   font-size: 1.25em;
   border-radius: 1rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3),
@@ -81,6 +81,6 @@ const ReceivedBubble = styled(MessageBubble)`
   clear: both;
 `;
 
-const MessageContent = styled.span`
+const MessageContent = styled.div`
   white-space: pre;
 `;
