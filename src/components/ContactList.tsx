@@ -12,7 +12,15 @@ export const ContactList: React.FC = () => {
     <>
       {contacts.map((contact) => (
         <ContactCard
-          cover={<img src={contact.avatar} alt={`${contact.name} avatar`} />}
+          hoverable
+          style={{ height: 150 }}
+          cover={
+            <img
+              src={contact.avatar}
+              alt={`${contact.name} avatar`}
+              height={100}
+            />
+          }
         >
           <p>{contact.name}</p>
         </ContactCard>
