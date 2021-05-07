@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useStore } from "react-redux";
+import styled from "@emotion/styled";
 
 import { Message } from "../models";
+import { IRootState } from "../store/reducers";
 
 interface IOwnProps {
   onSubmit: (message: Message) => { type: string; payload: Message };
@@ -9,6 +12,9 @@ interface IOwnProps {
 interface IInputProps extends IOwnProps {}
 
 export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
+  const state: IRootState = useStore().getState();
+  const { currentContact } = state.contact;
+
   const [command, setCommand] = useState("");
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -20,7 +26,7 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
   const handleSubmit = () => {
     const message = new Message({
       content: command,
-      sender: "landry",
+      sender: currentContact.name,
       date: new Date().toLocaleDateString("fr-FR"),
       type: "text",
     });
@@ -38,17 +44,28 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
   };
 
   return (
-    <>
-      <input
+    <ChatInput className="chat-input">
+      <CommandInput
         id="command-input"
         type="text"
         value={command}
         onChange={(event) => setCommand(event.target.value)}
         onKeyPress={handleKeyPress}
       />
-      <button type="button" onClick={handleSubmit}>
+      <SendButton type="button" onClick={handleSubmit}>
         Send
-      </button>
-    </>
+      </SendButton>
+    </ChatInput>
   );
 };
+
+const ChatInput = styled.div`
+  position: absolute;
+  bottom: 2em;
+`;
+
+const CommandInput = styled.input``;
+
+const SendButton = styled.button`
+  margin-left: 8px;
+`;

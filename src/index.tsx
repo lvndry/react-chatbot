@@ -6,7 +6,7 @@ import { Chatbot } from "./components/Chatbot";
 
 import store from "./store";
 
-import "./style.scss";
+import "./app.css";
 
 const App = () => {
   return (
