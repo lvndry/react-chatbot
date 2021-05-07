@@ -4,8 +4,8 @@
 - 3 bots
 - All bots respond to the command `whoami`
 - Turtle bot is in charge of images it can get memes, cat images, gif
-- Pen bot can get a quote or a joke
-- Popcorn bot recommend movies or youtube videos
+- Pen bot can get a quote or a joke and chuck Norris
+- news bot recommend news and trusted sources
 
 ## Getting started
 

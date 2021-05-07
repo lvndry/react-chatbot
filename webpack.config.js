@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 
 const devMode = process.env.NODE_ENV !== "production";
 
@@ -13,6 +14,8 @@ const miniCssExtractPlugin = new MiniCssExtractPlugin({
   filename: "[name].css",
   chunkFilename: "[id].css",
 });
+
+const dotenvPlugin = new Dotenv();
 
 module.exports = {
   devtool: "inline-source-map",
@@ -59,5 +62,5 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
   },
-  plugins: [htmlWebpackPlugin, miniCssExtractPlugin],
+  plugins: [htmlWebpackPlugin, miniCssExtractPlugin, dotenvPlugin],
 };

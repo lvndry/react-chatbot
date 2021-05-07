@@ -16,8 +16,10 @@ export const ConversationComponent: React.FC<IConversationProps> = ({
   return (
     <div>
       <ul>
-        {messages.map((message: Message) => (
-          <li key={message.content}>{message.content}</li>
+        {messages.map((message: Message, index) => (
+          <li key={index.toString()}>
+            {message.sender} - {message.content} - {message.date}
+          </li>
         ))}
       </ul>
     </div>
