@@ -13,10 +13,10 @@ export const Conversation: React.FC = () => {
   );
 
   return (
-    <Container>
+    <Container id="conversation-container">
       {messages.map((message: Message, index) => {
         return message.sender === currentContact.name ? (
-          <SentBubble key={index}>
+          <SentBubble key={message.id}>
             <span>
               {message.sender} - {message.date}
             </span>
@@ -25,7 +25,7 @@ export const Conversation: React.FC = () => {
             </MessageContent>
           </SentBubble>
         ) : (
-          <ReceivedBubble key={index}>
+          <ReceivedBubble key={message.id}>
             <span>
               {message.sender} - {message.date}
             </span>
@@ -48,6 +48,13 @@ export const Conversation: React.FC = () => {
   );
 };
 
+const Container = styled.div`
+  overflow: auto;
+  max-height: 85%;
+  height: calc(100vh - 127px);
+  padding: 16px;
+`;
+
 const MessageBubble = styled.div`
   position: relative;
   width: fit-content;
@@ -60,12 +67,6 @@ const MessageBubble = styled.div`
   border-radius: 1rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3),
     0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
-`;
-
-const Container = styled.div`
-  overflow: auto;
-  max-height: 85%;
-  padding: 8px 16px;
 `;
 
 const SentBubble = styled(MessageBubble)`
@@ -82,5 +83,5 @@ const ReceivedBubble = styled(MessageBubble)`
 `;
 
 const MessageContent = styled.div`
-  white-space: pre;
+  white-space: pre-wrap;
 `;

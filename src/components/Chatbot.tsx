@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import Routes from "./routes";
 
 import { Bot, Contact, Message } from "../models";
-import { ChatActionsType, contactActionsType } from "../store/actions";
+import { addMessage, setContacts, setCurrentContact } from "../store/actions";
 
 export const Chatbot = () => {
   const dispatch = useDispatch();
@@ -45,11 +45,9 @@ export const Chatbot = () => {
       }),
     ];
 
-    dispatch({ type: contactActionsType.SET_CONTACTS, payload: contacts });
-    dispatch({
-      type: contactActionsType.SET_CURRENT_CONTACT,
-      payload: contacts.find((contact) => contact.id === "0"),
-    });
+    dispatch(setContacts(contacts));
+    const currentContact = contacts.find((contact) => contact.id === "0");
+    dispatch(setCurrentContact(currentContact));
 
     document.addEventListener(
       "newMessage",
@@ -69,21 +67,28 @@ News Bot:
   @headline: Gives you and headline from french news
 `;
 
-          const payload = new Message({ sender: "Help", content });
-          dispatch({ type: ChatActionsType.ADD_MESSAGE, payload });
+          const helpMessage = new Message({ sender: "Help", content });
+          dispatch(addMessage(helpMessage));
         } else {
           contacts.map(async (contact) => {
             if (contact instanceof Bot) {
               const message = await contact.parseCommand(command);
               if (message) {
-                dispatch({
-                  type: ChatActionsType.ADD_MESSAGE,
-                  payload: message,
-                });
+                dispatch(addMessage(message));
               }
             }
           });
         }
+
+        setTimeout(() => {
+          const conversationbox = document.getElementById(
+            "conversation-container"
+          );
+          conversationbox.scrollTo({
+            top: conversationbox.scrollHeight,
+            behavior: "smooth",
+          });
+        }, 900);
       }
     );
   }, []);

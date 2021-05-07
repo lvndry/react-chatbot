@@ -65,9 +65,12 @@ export const getArt: () => Promise<string> = async () => {
     const index = mathUtils.getRandomInRange(1, 470000);
     const endpoint = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${index}`;
 
-    const { data } = await axios.get(endpoint);
-
-    src = data.primaryImageSmall;
+    try {
+      const { data } = await axios.get(endpoint);
+      src = data.primaryImageSmall;
+    } catch (err) {
+      src = "";
+    }
   }
 
   return src;

@@ -12,6 +12,7 @@ export const ContactList: React.FC = () => {
     <>
       {contacts.map((contact) => (
         <ContactCard
+          key={contact.id}
           hoverable
           style={{ height: 150 }}
           cover={

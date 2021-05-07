@@ -1,4 +1,4 @@
-import { ActionType, createAction, action } from "typesafe-actions";
+import { ActionType, createAction } from "typesafe-actions";
 import { Message } from "../../models";
 
 export const ChatActionsType = {
