@@ -59,10 +59,16 @@ export const getDog: () => Promise<string> = async () => {
 };
 
 export const getArt: () => Promise<string> = async () => {
-  const index = mathUtils.getRandomInRange(1, 470000);
-  const endpoint = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${index}`;
+  let src = "";
 
-  const { data } = await axios.get(endpoint);
+  while (src === "") {
+    const index = mathUtils.getRandomInRange(1, 470000);
+    const endpoint = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${index}`;
 
-  return data.primaryImageSmall;
+    const { data } = await axios.get(endpoint);
+
+    src = data.primaryImageSmall;
+  }
+
+  return src;
 };

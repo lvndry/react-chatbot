@@ -17,13 +17,30 @@ export const Conversation: React.FC = () => {
       {messages.map((message: Message, index) => {
         return message.sender === currentContact.name ? (
           <SentBubble key={index}>
-            {message.sender} - {message.date}
-            <MessageContent>{message.content}</MessageContent>
+            <span>
+              {message.sender} - {message.date}
+            </span>
+            <MessageContent>
+              <p>{message.content}</p>
+            </MessageContent>
           </SentBubble>
         ) : (
           <ReceivedBubble key={index}>
-            {message.sender} - {message.date}
-            <MessageContent>{message.content}</MessageContent>
+            <span>
+              {message.sender} - {message.date}
+            </span>
+            <MessageContent>
+              {message.type === "image" ? (
+                <img
+                  alt="image bot"
+                  src={message.content}
+                  width={300}
+                  height={300}
+                />
+              ) : (
+                <p>{message.content}</p>
+              )}
+            </MessageContent>
           </ReceivedBubble>
         );
       })}
@@ -31,14 +48,14 @@ export const Conversation: React.FC = () => {
   );
 };
 
-const MessageBubble = styled.p`
+const MessageBubble = styled.div`
   position: relative;
   width: fit-content;
   max-width: 55em;
   overflow-wrap: break-word;
   margin-bottom: 2em;
 
-  padding: 1.125em 1.5em;
+  padding: 1em 1.5em 0em 1.5em;
   font-size: 1.25em;
   border-radius: 1rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3),

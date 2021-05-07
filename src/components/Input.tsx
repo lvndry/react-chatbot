@@ -28,7 +28,6 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
     const message = new Message({
       content: command,
       sender: currentContact.name,
-      date: new Date().toLocaleDateString("fr-FR"),
       type: "text",
     });
 
