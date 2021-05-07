@@ -11,6 +11,12 @@ interface IInputProps extends IOwnProps {}
 export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
   const [command, setCommand] = useState("");
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   const handleSubmit = () => {
     const message = new Message({
       content: command,
@@ -34,11 +40,13 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
   return (
     <>
       <input
+        id="command-input"
         type="text"
         value={command}
         onChange={(event) => setCommand(event.target.value)}
+        onKeyPress={handleKeyPress}
       />
-      <button type="button" onClick={() => handleSubmit()}>
+      <button type="button" onClick={handleSubmit}>
         Send
       </button>
     </>
