@@ -11,7 +11,9 @@ export const ContactList: React.FC = () => {
   return (
     <>
       {contacts.map((contact) => (
-        <ContactCard>
+        <ContactCard
+          cover={<img src={contact.avatar} alt={`${contact.name} avatar`} />}
+        >
           <p>{contact.name}</p>
         </ContactCard>
       ))}
