@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as mathUtils from "./math";
 
 axios.defaults.headers["Accept"] = "application/json";
 
@@ -37,4 +38,31 @@ export const getSource: () => Promise<string> = async () => {
   const { data } = await axios.get(endpoint);
   const { sources }: { sources: { name: string }[] } = data;
   return sources[Math.floor(Math.random() * sources.length)].name;
+};
+
+export const getCat: () => Promise<string> = async () => {
+  const endpoint = "https://api.thecatapi.com/v1/images/search?size=small";
+  const headers = {
+    "x-api-key": process.env.CAT_API_KEY,
+  };
+
+  const { data } = await axios.get(endpoint, { headers });
+  return data[0].url;
+};
+
+export const getDog: () => Promise<string> = async () => {
+  const endpoint = "https://dog.ceo/api/breeds/image/random";
+
+  const { data } = await axios.get(endpoint);
+
+  return data.message;
+};
+
+export const getArt: () => Promise<string> = async () => {
+  const index = mathUtils.getRandomInRange(1, 470000);
+  const endpoint = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${index}`;
+
+  const { data } = await axios.get(endpoint);
+
+  return data.primaryImageSmall;
 };

@@ -1,4 +1,5 @@
 import {
+  ImageBotParser,
   NewsBotParser,
   NiceBotParser,
   PenBotParser,
@@ -38,6 +39,8 @@ export class Bot extends Contact {
           case "@":
             // do popcorn stuff
             return NewsBotParser(this.name, command);
+          case "#":
+            return ImageBotParser(this.name, command);
           default:
             return null;
         }

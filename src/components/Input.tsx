@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
 import { useStore } from "react-redux";
 import styled from "@emotion/styled";
 import { Input as AntdInput, Button } from "antd";
@@ -50,7 +50,9 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
         id="command-input"
         type="text"
         value={command}
-        onChange={(event) => setCommand(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+          setCommand(event.target.value)
+        }
         onKeyPress={handleKeyPress}
         size="large"
       />

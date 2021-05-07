@@ -1,7 +1,10 @@
 import { Message } from "../models";
 import {
+  getArt,
+  getCat,
   getChuckJoke,
   getDadJoke,
+  getDog,
   getHeadline,
   getQuote,
   getSource,
@@ -73,6 +76,32 @@ export const NiceBotParser = async (sender: string, command: string) => {
     case "youloveme":
       message.content =
         "Very much! Thanks for making such a good code. You'll have a nice grade for sure";
+      return message;
+    default:
+      message.content = "Invalid command";
+      return message;
+  }
+};
+
+export const ImageBotParser = async (sender: string, command: string) => {
+  let [, suffix] = command.split("#");
+  suffix = suffix.trim();
+
+  const message = new Message({
+    sender,
+    content: "",
+    type: "image",
+  });
+
+  switch (suffix) {
+    case "dog":
+      message.content = await getDog();
+      return message;
+    case "cat":
+      message.content = await getCat();
+      return message;
+    case "art":
+      message.content = await getArt();
       return message;
     default:
       message.content = "Invalid command";

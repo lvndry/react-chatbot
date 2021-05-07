@@ -15,6 +15,7 @@ export const Chatbot = () => {
       new Bot({ id: "1", name: "Nice bot", prefix: "$" }),
       new Bot({ id: "2", name: "Pen bot", prefix: ">" }),
       new Bot({ id: "3", name: "News bot", prefix: "@" }),
+      new Bot({ id: "4", name: "Image bot", prefix: "#" }),
     ];
 
     dispatch({ type: contactActionsType.SET_CONTACTS, payload: contacts });
