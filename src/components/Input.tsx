@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Message } from "../models";
 
 interface IOwnProps {
-  onSubmit: (message: Message) => any; // TODO remove any
+  onSubmit: (message: Message) => { type: string; payload: Message };
 }
 
 interface IInputProps extends IOwnProps {}

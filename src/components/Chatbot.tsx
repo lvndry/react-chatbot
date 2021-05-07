@@ -11,13 +11,17 @@ export const Chatbot = () => {
 
   useEffect(() => {
     const contacts = [
-      new Contact({ id: "0", name: "Me" }),
-      new Bot({ id: "1", name: "Meme bot", prefix: "$" }),
+      new Contact({ id: "0", name: "lvndry" }),
+      new Bot({ id: "1", name: "Nice bot", prefix: "$" }),
       new Bot({ id: "2", name: "Pen bot", prefix: ">" }),
-      new Bot({ id: "3", name: "Popcorn bot", prefix: "@" }),
+      new Bot({ id: "3", name: "News bot", prefix: "@" }),
     ];
 
     dispatch({ type: contactActionsType.SET_CONTACTS, payload: contacts });
+    dispatch({
+      type: contactActionsType.SET_CURRENT_CONTACT,
+      payload: contacts.find((contact) => contact.id === "0"),
+    });
 
     document.addEventListener(
       "newMessage",
