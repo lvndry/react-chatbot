@@ -26,7 +26,6 @@ export const Chatbot = () => {
     document.addEventListener(
       "newMessage",
       ({ detail }: CustomEvent<{ message: Message }>) => {
-        console.log(detail);
         contacts.map(async (contact) => {
           if (contact instanceof Bot) {
             const message = await contact.parseCommand(detail.message.content);

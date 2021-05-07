@@ -1,30 +1,30 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+import { Card } from "antd";
 
 import { IRootState } from "../store/reducers";
+import styled from "@emotion/styled";
 
-interface IStateProps {
-  contacts: IRootState["contact"]["contacts"];
-}
+export const ContactList: React.FC = () => {
+  const contacts = useSelector((state: IRootState) => state.contact.contacts);
 
-interface IContactListProps extends IStateProps {}
-
-export const ContactListComponent: React.FC<IContactListProps> = ({
-  contacts,
-}) => {
   return (
-    <ul>
+    <>
       {contacts.map((contact) => (
-        <li key={contact.id}>{contact.name}</li>
+        <ContactCard>
+          <p>{contact.name}</p>
+        </ContactCard>
       ))}
-    </ul>
+    </>
   );
 };
 
-const mapStateToProps = (state: IRootState) => ({
-  contacts: state.contact.contacts,
-});
+const ContactCard = styled(Card)`
+  margin-bottom: 8px;
+  width: 160px;
 
-export const ContactList = connect<IStateProps, IRootState, {}>(
-  mapStateToProps
-)(ContactListComponent);
+  p {
+    margin: auto;
+    text-align: center;
+  }
+`;

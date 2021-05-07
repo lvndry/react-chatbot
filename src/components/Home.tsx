@@ -28,4 +28,6 @@ const ChatArticle = styled.article`
   width: 85%;
 `;
 
-const ContactListArticle = styled.article``;
+const ContactListArticle = styled.article`
+  margin-left: 3em;
+`;
