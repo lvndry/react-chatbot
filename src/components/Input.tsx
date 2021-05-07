@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useStore } from "react-redux";
 import styled from "@emotion/styled";
+import { Input as AntdInput, Button } from "antd";
 
 import { Message } from "../models";
 import { IRootState } from "../store/reducers";
@@ -51,10 +52,9 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
         value={command}
         onChange={(event) => setCommand(event.target.value)}
         onKeyPress={handleKeyPress}
+        size="large"
       />
-      <SendButton type="button" onClick={handleSubmit}>
-        Send
-      </SendButton>
+      <SendButton onClick={handleSubmit}>Send</SendButton>
     </ChatInput>
   );
 };
@@ -62,10 +62,12 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
 const ChatInput = styled.div`
   position: absolute;
   bottom: 2em;
+  display: inline-flex;
 `;
 
-const CommandInput = styled.input``;
+const CommandInput = styled(AntdInput)``;
 
-const SendButton = styled.button`
+const SendButton = styled(Button)`
   margin-left: 8px;
+  height: auto;
 `;

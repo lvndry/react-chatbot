@@ -13,3 +13,7 @@
 npm install
 npm start
 ```
+
+# TODO:
+
+- Create a 4th bot that uses an API

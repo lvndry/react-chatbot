@@ -26,7 +26,8 @@ export const PenBotParser = async (sender: string, command: string) => {
       message.content = chuck;
       return message;
     default:
-      return null;
+      message.content = "Invalid command";
+      return message;
   }
 };
 
@@ -50,7 +51,8 @@ export const NewsBotParser = async (sender: string, command: string) => {
       message.content = source;
       return message;
     default:
-      return null;
+      message.content = "Invalid command";
+      return message;
   }
 };
 
@@ -73,6 +75,7 @@ export const NiceBotParser = async (sender: string, command: string) => {
         "Very much! Thanks for making such a good code. You'll have a nice grade for sure";
       return message;
     default:
-      return null;
+      message.content = "Invalid command";
+      return message;
   }
 };

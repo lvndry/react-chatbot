@@ -19,7 +19,7 @@ export const Home = () => {
 
 const Main = styled.main`
   display: flex;
-  height: 80%;
+  height: 100%;
   width: auto;
   padding: 20px;
 `;

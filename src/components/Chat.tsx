@@ -11,13 +11,13 @@ import { ChatActionsType } from "../store/actions";
 export const Chat: React.FC = () => {
   const dispatch = useDispatch();
 
-  const onSubmit = (message: Message) =>
+  const handleSubmit = (message: Message) =>
     dispatch({ type: ChatActionsType.ADD_MESSAGE, payload: message });
 
   return (
     <ChatWrapper>
       <Conversation />
-      <Input onSubmit={onSubmit} />
+      <Input onSubmit={handleSubmit} />
     </ChatWrapper>
   );
 };

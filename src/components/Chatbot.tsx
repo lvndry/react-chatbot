@@ -26,14 +26,36 @@ export const Chatbot = () => {
     document.addEventListener(
       "newMessage",
       ({ detail }: CustomEvent<{ message: Message }>) => {
-        contacts.map(async (contact) => {
-          if (contact instanceof Bot) {
-            const message = await contact.parseCommand(detail.message.content);
-            if (message) {
-              dispatch({ type: ChatActionsType.ADD_MESSAGE, payload: message });
+        const command = detail.message.content;
+        if (command === "help") {
+          const content = `
+Nice Bot:
+  $howareyou: Tells you how the bot feels
+  $youloveme: Tells you how much the bot love you
+Pen Bot:
+  >quote: Gives you an inspiratiional quote
+  >joke: Gives you a (dad) joke
+  >chuck: Gives you a chuck norris joke
+News Bot:
+  @source: Give a news source you can trust
+  @headline: Gives you and headline from french news
+`;
+
+          const payload = new Message({ sender: "Help", content });
+          dispatch({ type: ChatActionsType.ADD_MESSAGE, payload });
+        } else {
+          contacts.map(async (contact) => {
+            if (contact instanceof Bot) {
+              const message = await contact.parseCommand(command);
+              if (message) {
+                dispatch({
+                  type: ChatActionsType.ADD_MESSAGE,
+                  payload: message,
+                });
+              }
             }
-          }
-        });
+          });
+        }
       }
     );
   }, []);

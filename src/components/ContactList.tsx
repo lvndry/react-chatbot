@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Card } from "antd";
+import styled from "@emotion/styled";
 
 import { IRootState } from "../store/reducers";
-import styled from "@emotion/styled";
 
 export const ContactList: React.FC = () => {
   const contacts = useSelector((state: IRootState) => state.contact.contacts);
