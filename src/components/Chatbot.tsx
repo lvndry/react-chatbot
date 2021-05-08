@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Routes from "./routes";
 
@@ -7,6 +7,7 @@ import { Bot, Contact, Message } from "../models";
 import { addMessage, setContacts, setCurrentContact } from "../store/actions";
 import { NewMessageContext } from "../context/newMessageContext";
 import { delay } from "../utils/async";
+import { IRootState } from "../store/reducers";
 
 export const Chatbot = () => {
   const dispatch = useDispatch();
@@ -47,7 +48,7 @@ Image Bot:
         dispatch(addMessage(helpMessage));
       });
     } else {
-      contacts.map(async (contact) => {
+      bots.map(async (contact) => {
         if (contact instanceof Bot) {
           const message = await contact.parseCommand(command);
           if (message) {
@@ -60,13 +61,7 @@ Image Bot:
     }
   };
 
-  const contacts = [
-    new Contact({
-      id: "0",
-      name: "lvndry",
-      avatar:
-        "https://cdn.dribbble.com/users/722835/screenshots/4082720/bot_icon.gif",
-    }),
+  const bots = [
     new Bot({
       id: "1",
       name: "Nice bot",
@@ -95,11 +90,14 @@ Image Bot:
     }),
   ];
 
+  const currentContact = useSelector(
+    (state: IRootState) => state.contact.currentContact
+  );
+
   useEffect(() => {
+    const contacts = [currentContact, ...bots];
     dispatch(setContacts(contacts));
-    const currentContact = contacts.find((contact) => contact.id === "0");
-    dispatch(setCurrentContact(currentContact));
-  }, []);
+  }, [currentContact]);
 
   return <Routes />;
 };
