@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { Home } from "./Home";
 import { Login } from "./Login";
+
 import { IRootState } from "../store/reducers";
 import { setCurrentContact } from "../store/actions";
+
 import { Contact } from "../models";
 
 const Routes = () => {
@@ -30,7 +32,7 @@ const Routes = () => {
         }
       }
     }
-  }, [currentUser, sessionStorageUser]);
+  }, [currentUser]);
 
   return (
     <BrowserRouter>

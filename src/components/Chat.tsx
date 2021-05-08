@@ -14,10 +14,11 @@ export const Chat: React.FC = () => {
 };
 
 const ChatWrapper = styled.div`
-  height: 100%;
+  position: relative;
+  height: auto;
   margin: auto;
   padding: 18px 18px;
-  background: #ebebeb;
-  position: relative;
+  background: #e29494;
+  opacity: 0.9;
   border-radius: 8px;
 `;

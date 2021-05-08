@@ -1,1 +1,11 @@
 @import "~antd/dist/antd.css";
+
+#app {
+  padding: 16px;
+  background: #ffc0c0;
+  font-family: "Roboto", sans-serif;
+}
+
+#app.login-app {
+  background-color: #fff;
+}

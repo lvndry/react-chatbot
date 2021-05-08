@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Routes from "./routes";
 
 import { Bot, Contact, Message } from "../models";
-import { addMessage, setContacts, setCurrentContact } from "../store/actions";
 import { NewMessageContext } from "../context/newMessageContext";
 import { delay } from "../utils/async";
+import { addMessage, setContacts } from "../store/actions";
 import { IRootState } from "../store/reducers";
 
 export const Chatbot = () => {

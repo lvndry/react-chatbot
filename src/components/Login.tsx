@@ -12,6 +12,9 @@ export const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
 
+  const app = document.getElementById("app");
+  app.classList.add("login-app");
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -38,6 +41,7 @@ export const Login: React.FC = () => {
 
       dispatch(setCurrentContact(currentUser));
       sessionStorage.setItem("currentContact", JSON.stringify(currentUser));
+      app.classList.remove("login-app");
       setUsername("");
       history.push("/");
     } else {
@@ -46,8 +50,9 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <LoginPage>
+    <LoginPage className="login">
       <Input
+        autoFocus
         name="username"
         value={username}
         placeholder="username"

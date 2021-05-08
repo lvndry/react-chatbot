@@ -6,23 +6,28 @@ import { ContactList } from "./ContactList";
 
 export const Home = () => {
   return (
-    <Main>
-      <ChatArticle>
-        <Chat />
-      </ChatArticle>
-      <ContactListArticle>
-        <ContactList />
-      </ContactListArticle>
-    </Main>
+    <>
+      <Title>React Chatbot</Title>
+      <Main>
+        <ChatArticle>
+          <Chat />
+        </ChatArticle>
+        <ContactListArticle>
+          <ContactList />
+        </ContactListArticle>
+      </Main>
+    </>
   );
 };
+
+const Title = styled.h1`
+  text-align: center;
+`;
 
 const Main = styled.main`
   display: flex;
   height: 100%;
   width: auto;
-  padding: 20px;
-  padding-right: 0;
 `;
 
 const ChatArticle = styled.article`

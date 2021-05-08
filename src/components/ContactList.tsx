@@ -12,8 +12,8 @@ export const ContactList: React.FC = () => {
     <>
       {contacts.map((contact) => (
         <ContactCard
-          key={contact.id}
           hoverable
+          key={contact.id}
           cover={<Cover src={contact.avatar} alt={`${contact.name} avatar`} />}
         >
           <p>{contact.name}</p>

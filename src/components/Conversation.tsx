@@ -51,7 +51,7 @@ export const Conversation: React.FC = () => {
             </MessageHeader>
             <MessageContent>
               {message.type === "image" ? (
-                <MessageImage alt="image bot" src={message.content} />
+                <MessageImage src={message.content} alt="image bot" />
               ) : (
                 <p>{message.content}</p>
               )}
@@ -81,12 +81,22 @@ const MessageBubble = styled.div`
   min-height: 10em;
   overflow-wrap: break-word;
   margin-bottom: 2em;
-
   padding: 1em 1.5em 0.5em 1.5em;
   font-size: 1.25em;
   border-radius: 1rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3),
     0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  animation: scaleIn 0.5s ease-in-out;
 `;
 
 const MessageHeader = styled.span`
@@ -103,6 +113,8 @@ const SentBubble = styled(MessageBubble)`
   .message-content {
     margin-left: 0.5em;
   }
+
+  transform-origin: bottom right 0;
 `;
 
 const ReceivedBubble = styled(MessageBubble)`
@@ -114,6 +126,8 @@ const ReceivedBubble = styled(MessageBubble)`
   .message-header {
     margin-bottom: 1em;
   }
+
+  transform-origin: bottom left 0;
 `;
 
 const MessageContent = styled.div`

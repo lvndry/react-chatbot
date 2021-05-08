@@ -24,7 +24,6 @@ export const Input: React.FC = () => {
     const message = new Message({
       content: command,
       sender: currentContact,
-      type: "text",
     });
 
     newMessageContext.handleNewMessage(message);
@@ -52,8 +51,12 @@ export const Input: React.FC = () => {
 
 const ChatInput = styled.div`
   position: absolute;
-  bottom: 2em;
   display: inline-flex;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 16px;
+  justify-content: space-between;
 `;
 
 const CommandInput = styled(AntdInput)``;
@@ -61,4 +64,6 @@ const CommandInput = styled(AntdInput)``;
 const SendButton = styled(Button)`
   margin-left: 8px;
   height: auto;
+  border-radius: 4px;
+  background-color: cornflowerblue;
 `;
