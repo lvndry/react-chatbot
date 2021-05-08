@@ -14,5 +14,6 @@
 git clone https://github.com/lvndry/react-chatbot.git
 cd react-chatbot
 npm install
-npm start
+npm run decrpyt
+npm run start
 ```

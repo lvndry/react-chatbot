@@ -11,7 +11,9 @@
   "homepage": "",
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "encrypt": "secure-env .env",
+    "decrypt": "node decrypt.js"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
@@ -36,6 +38,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
+    "secure-env": "^1.2.0",
     "style-loader": "^2.0.0",
     "ts-loader": "^9.1.2",
     "typescript": "^4.2.4",
