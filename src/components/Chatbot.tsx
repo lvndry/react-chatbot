@@ -20,9 +20,6 @@ export const Chatbot = () => {
     if (command === "help") {
       const content = `All bots:
   whoami: All bots tells there names
-Nice Bot:
-  $howareyou: Tells you how the bot feels
-  $youloveme: Tells you how much the bot love you
 Pen Bot:
   >quote: Gives you an inspiratiional quote
   >joke: Gives you a (dad) joke
@@ -34,6 +31,9 @@ Image Bot:
   #cat: Gives a cat image
   #dog: Gives a dog image
   #art: Gives an artwork
+Nice Bot:
+  $howareyou: Tells you how the bot feels
+  $youloveme: Tells you how much the bot love you
 `;
 
       const sender = new Contact({

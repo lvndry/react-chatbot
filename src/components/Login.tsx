@@ -36,7 +36,7 @@ export const Login: React.FC = () => {
 
   return (
     <LoginPage>
-      <input
+      <Input
         name="username"
         value={username}
         placeholder="username"
@@ -55,9 +55,25 @@ const Button = styled(AntdButton)`
   height: auto;
   font-size: x-large;
   font-weight: 600;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 const LoginPage = styled.div`
   text-align: center;
   padding-top: 30em;
+`;
+
+const Input = styled.input`
+  border-radius: 8px;
+  padding: 0.5em;
+  box-sizing: border-box;
+  font-size: larger;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 2pt 1pt #0077b6;
+    border: 1px solid #0077b6;
+  }
 `;
