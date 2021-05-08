@@ -1,20 +1,16 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useContext } from "react";
 import { useStore } from "react-redux";
 import styled from "@emotion/styled";
 import { Input as AntdInput, Button } from "antd";
 
 import { Message } from "../models";
 import { IRootState } from "../store/reducers";
+import { NewMessageContext } from "../context/newMessageContext";
 
-interface IOwnProps {
-  onSubmit: (message: Message) => { type: string; payload: Message };
-}
-
-interface IInputProps extends IOwnProps {}
-
-export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
+export const Input: React.FC = () => {
   const state: IRootState = useStore().getState();
   const { currentContact } = state.contact;
+  const newMessageContext = useContext(NewMessageContext);
 
   const [command, setCommand] = useState("");
 
@@ -31,14 +27,7 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
       type: "text",
     });
 
-    onSubmit(message);
-
-    const newMessageEvent = new CustomEvent<{ message: Message }>(
-      "newMessage",
-      { detail: { message } }
-    );
-
-    document.dispatchEvent(newMessageEvent);
+    newMessageContext.handleNewMessage(message);
 
     setCommand("");
   };
@@ -49,6 +38,7 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
         id="command-input"
         type="text"
         value={command}
+        placeholder="help"
         onChange={(event: ChangeEvent<HTMLInputElement>) =>
           setCommand(event.target.value)
         }

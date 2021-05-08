@@ -17,5 +17,4 @@ npm start
 
 # TODO
 
-- use context to set current user
 - Improve design
