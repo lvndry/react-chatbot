@@ -23,20 +23,32 @@ export const Conversation: React.FC = () => {
   return (
     <Container id="conversation-container">
       {messages.map((message: Message, index) => {
-        return message.sender === currentContact.name ? (
+        return message.sender.name === currentContact.name ? (
           <SentBubble key={message.id}>
-            <span>
-              {message.sender} - {message.date}
-            </span>
-            <MessageContent>
+            <MessageHeader>
+              <Avatar
+                src={message.sender.avatar}
+                alt={`${message.sender.name} avatar`}
+              />
+              <span>
+                {message.sender.name} - {message.date}
+              </span>
+            </MessageHeader>
+            <MessageContent className="message-content">
               <p>{message.content}</p>
             </MessageContent>
           </SentBubble>
         ) : (
           <ReceivedBubble key={message.id}>
-            <span>
-              {message.sender} - {message.date}
-            </span>
+            <MessageHeader>
+              <Avatar
+                src={message.sender.avatar}
+                alt={`${message.sender.name} avatar`}
+              />
+              <span>
+                {message.sender.name} - {message.date}
+              </span>
+            </MessageHeader>
             <MessageContent>
               {message.type === "image" ? (
                 <img
@@ -66,7 +78,12 @@ const Container = styled.div`
 const MessageBubble = styled.div`
   position: relative;
   width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   max-width: 55em;
+  min-width: 20em;
+  min-height: 10em;
   overflow-wrap: break-word;
   margin-bottom: 2em;
 
@@ -77,10 +94,20 @@ const MessageBubble = styled.div`
     0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
 `;
 
+const MessageHeader = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const SentBubble = styled(MessageBubble)`
   background-color: #1982fc;
   float: right;
   clear: both;
+
+  .message-content {
+    margin-left: 0.5em;
+  }
 `;
 
 const ReceivedBubble = styled(MessageBubble)`
@@ -92,4 +119,10 @@ const ReceivedBubble = styled(MessageBubble)`
 
 const MessageContent = styled.div`
   white-space: pre-wrap;
+`;
+
+const Avatar = styled.img`
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
 `;

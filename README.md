@@ -17,5 +17,5 @@ npm start
 
 # TODO
 
-- replace setTimeout by async call
+- use context to set current user
 - Improve design

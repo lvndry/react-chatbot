@@ -67,7 +67,14 @@ News Bot:
   @headline: Gives you and headline from french news
 `;
 
-          const helpMessage = new Message({ sender: "Help", content });
+          const sender = new Contact({
+            id: "5",
+            name: "Help",
+            avatar:
+              "https://media4.giphy.com/media/TLO184piUJRmwqxKVN/giphy.gif?cid=6c09b952ih3t0yxrf9qej4aqezosw6dl5f093kk65nfakljk&rid=giphy.gif",
+          });
+
+          const helpMessage = new Message({ sender, content });
           dispatch(addMessage(helpMessage));
         } else {
           contacts.map(async (contact) => {

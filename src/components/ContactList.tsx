@@ -14,14 +14,7 @@ export const ContactList: React.FC = () => {
         <ContactCard
           key={contact.id}
           hoverable
-          style={{ height: 150 }}
-          cover={
-            <img
-              src={contact.avatar}
-              alt={`${contact.name} avatar`}
-              height={100}
-            />
-          }
+          cover={<Cover src={contact.avatar} alt={`${contact.name} avatar`} />}
         >
           <p>{contact.name}</p>
         </ContactCard>
@@ -30,9 +23,15 @@ export const ContactList: React.FC = () => {
   );
 };
 
+const Cover = styled.img`
+  height: 100px;
+  object-fit: contain;
+`;
+
 const ContactCard = styled(Card)`
   margin-bottom: 8px;
   width: 160px;
+  height: 150px;
 
   p {
     margin: auto;

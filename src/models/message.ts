@@ -1,16 +1,17 @@
+import { Contact } from "./contact";
 import { getMessageDate } from "../utils/date";
 
 export type MessageType = "text" | "image";
 
 export interface MessageModel {
-  sender: string;
+  sender: Contact;
   content: string;
   date?: string;
   type?: MessageType;
 }
 
 export class Message {
-  public sender: string;
+  public sender: Contact;
   public date: string;
   public content: string;
   public type: MessageType;

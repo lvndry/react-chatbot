@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useStore } from "react-redux";
 import styled from "@emotion/styled";
 import { Input as AntdInput, Button } from "antd";
@@ -27,7 +27,7 @@ export const Input: React.FC<IInputProps> = ({ onSubmit }) => {
   const handleSubmit = () => {
     const message = new Message({
       content: command,
-      sender: currentContact.name,
+      sender: currentContact,
       type: "text",
     });
 

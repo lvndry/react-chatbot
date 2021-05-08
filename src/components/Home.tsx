@@ -22,6 +22,7 @@ const Main = styled.main`
   height: 100%;
   width: auto;
   padding: 20px;
+  padding-right: 0;
 `;
 
 const ChatArticle = styled.article`

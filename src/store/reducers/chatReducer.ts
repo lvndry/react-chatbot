@@ -1,4 +1,5 @@
 import { getType } from "typesafe-actions";
+
 import { Message } from "../../models";
 
 import { ChatActions, TChatActions } from "../actions";

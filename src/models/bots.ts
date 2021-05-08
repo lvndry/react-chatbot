@@ -23,7 +23,7 @@ export class Bot extends Contact {
   async parseCommand(command: string) {
     if (command === "whoami") {
       return new Message({
-        sender: this.name,
+        sender: this,
         content: `Hi my name is ${this.name}`,
       });
     } else {
@@ -32,15 +32,15 @@ export class Bot extends Contact {
         switch (prefix) {
           case "$":
             // do nice bot stuff
-            return NiceBotParser(this.name, command);
+            return NiceBotParser(this, command);
           case ">":
             // do pen bot stuff
-            return PenBotParser(this.name, command);
+            return PenBotParser(this, command);
           case "@":
             // do popcorn stuff
-            return NewsBotParser(this.name, command);
+            return NewsBotParser(this, command);
           case "#":
-            return ImageBotParser(this.name, command);
+            return ImageBotParser(this, command);
           default:
             return null;
         }

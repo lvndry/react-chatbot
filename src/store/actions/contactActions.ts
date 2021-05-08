@@ -1,4 +1,5 @@
 import { ActionType, createAction } from "typesafe-actions";
+
 import { Contact } from "../../models";
 
 export const contactActionsType = {

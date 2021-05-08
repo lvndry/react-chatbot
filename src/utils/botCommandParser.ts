@@ -1,4 +1,4 @@
-import { Message } from "../models";
+import { Contact, Message } from "../models";
 import {
   getArt,
   getCat,
@@ -10,7 +10,7 @@ import {
   getSource,
 } from "./http";
 
-export const PenBotParser = async (sender: string, command: string) => {
+export const PenBotParser = async (sender: Contact, command: string) => {
   let [, suffix] = command.split(">");
   suffix = suffix.trim();
   const message = new Message({ sender, content: "", type: "text" });
@@ -34,7 +34,7 @@ export const PenBotParser = async (sender: string, command: string) => {
   }
 };
 
-export const NewsBotParser = async (sender: string, command: string) => {
+export const NewsBotParser = async (sender: Contact, command: string) => {
   let [, suffix] = command.split("@");
   suffix = suffix.trim();
 
@@ -59,7 +59,7 @@ export const NewsBotParser = async (sender: string, command: string) => {
   }
 };
 
-export const NiceBotParser = async (sender: string, command: string) => {
+export const NiceBotParser = async (sender: Contact, command: string) => {
   let [, suffix] = command.split("$");
   suffix = suffix.trim();
 
@@ -83,7 +83,7 @@ export const NiceBotParser = async (sender: string, command: string) => {
   }
 };
 
-export const ImageBotParser = async (sender: string, command: string) => {
+export const ImageBotParser = async (sender: Contact, command: string) => {
   let [, suffix] = command.split("#");
   suffix = suffix.trim();
 
