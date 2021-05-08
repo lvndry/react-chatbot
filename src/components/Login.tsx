@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import styled from "@emotion/styled";
+import { Button as AntdButton } from "antd";
 
 import { Contact } from "../models";
 
@@ -11,27 +13,51 @@ export const Login: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   const handleSubmit = () => {
-    const currentUser = new Contact({
-      id: "0",
-      name: username,
-      avatar:
-        "https://cdn.dribbble.com/users/722835/screenshots/4082720/bot_icon.gif",
-    });
+    if (username !== "") {
+      const currentUser = new Contact({
+        id: "0",
+        name: username,
+        avatar:
+          "https://cdn.dribbble.com/users/722835/screenshots/4082720/bot_icon.gif",
+      });
 
-    dispatch(setCurrentContact(currentUser));
+      dispatch(setCurrentContact(currentUser));
 
-    history.push("/");
+      history.push("/");
+    }
   };
 
   return (
-    <div>
+    <LoginPage>
       <input
         name="username"
         value={username}
+        placeholder="username"
         onChange={(event) => setUsername(event.target.value)}
+        onKeyPress={handleKeyPress}
       />
-      <button onClick={handleSubmit}>Login</button>
-    </div>
+      <Button size="large" onClick={handleSubmit} type="ghost" shape="circle">
+        &#8250;
+      </Button>
+    </LoginPage>
   );
 };
+
+const Button = styled(AntdButton)`
+  margin-left: 8px;
+  height: auto;
+  font-size: x-large;
+  font-weight: 600;
+`;
+
+const LoginPage = styled.div`
+  text-align: center;
+  padding-top: 30em;
+`;
