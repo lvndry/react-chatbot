@@ -15,3 +15,7 @@ npm install
 npm start
 ```
 
+# TODO
+
+- replace setTimeout by async call
+- Improve design

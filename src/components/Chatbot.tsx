@@ -79,16 +79,6 @@ News Bot:
             }
           });
         }
-
-        setTimeout(() => {
-          const conversationbox = document.getElementById(
-            "conversation-container"
-          );
-          conversationbox.scrollTo({
-            top: conversationbox.scrollHeight,
-            behavior: "smooth",
-          });
-        }, 900);
       }
     );
   }, []);

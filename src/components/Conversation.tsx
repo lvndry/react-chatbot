@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useStore } from "react-redux";
 import styled from "@emotion/styled";
 
@@ -11,6 +11,14 @@ export const Conversation: React.FC = () => {
   const messages = useSelector(
     (state: IRootState) => state.conversation.messages
   );
+
+  useEffect(() => {
+    const conversationbox = document.getElementById("conversation-container");
+    conversationbox.scrollTo({
+      top: conversationbox.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [messages]);
 
   return (
     <Container id="conversation-container">
