@@ -21,10 +21,10 @@ const Routes = () => {
   const sessionStorageUser = sessionStorage.getItem("currentContact");
 
   useEffect(() => {
-    if (sessionStorageUser && sessionStorageUser.length > 0) {
-      if (currentUser.id !== "") {
-        setIsAuth(true);
-      } else {
+    if (currentUser.id !== "") {
+      setIsAuth(true);
+    } else {
+      if (sessionStorageUser && sessionStorageUser.length > 0) {
         const jsonuser: Contact = JSON.parse(sessionStorageUser);
         if (jsonuser.id !== "") {
           dispatch(setCurrentContact(jsonuser));

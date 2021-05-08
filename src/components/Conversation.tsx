@@ -22,7 +22,7 @@ export const Conversation: React.FC = () => {
 
   return (
     <Container id="conversation-container">
-      {messages.map((message: Message, index) => {
+      {messages.map((message: Message) => {
         return message.sender.name === currentContact.name ? (
           <SentBubble color={message.sender.color} key={message.id}>
             <MessageHeader className="message-header">
@@ -103,6 +103,7 @@ const MessageHeader = styled.span`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-weight: bold;
 `;
 
 const SentBubble = styled(MessageBubble)`

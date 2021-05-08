@@ -27,6 +27,7 @@ export const ContactList: React.FC = () => {
 const Cover = styled.img`
   height: 100px;
   object-fit: contain;
+  padding-top: 8px;
 `;
 
 const ContactCard = styled(Card)`

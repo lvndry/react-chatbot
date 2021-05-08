@@ -1,4 +1,5 @@
 import {
+  HelpBotParser,
   ImageBotParser,
   NewsBotParser,
   NiceBotParser,
@@ -44,6 +45,8 @@ export class Bot extends Contact {
           default:
             return null;
         }
+      } else if ((command == "help" || command === "man") && this.id === "5") {
+        return HelpBotParser(this, command);
       }
     }
   }

@@ -1,6 +1,11 @@
 module.exports = {
-  extends: ["plugin:react-hooks/recommended", "airbnb", "prettier"],
-  plugins: ["react"],
+  extends: [
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "airbnb",
+    "prettier",
+  ],
   env: {
     es6: true,
     browser: true,

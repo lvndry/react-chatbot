@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Message } from "../models";
 
 interface INewMessageContext {
@@ -9,6 +10,4 @@ const initalState: INewMessageContext = {
   handleNewMessage: (message: Message) => {},
 };
 
-export const NewMessageContext = React.createContext<INewMessageContext>(
-  initalState
-);
+export const NewMessageContext = React.createContext(initalState);

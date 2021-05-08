@@ -34,6 +34,7 @@ export const Input: React.FC = () => {
   return (
     <ChatInput className="chat-input">
       <CommandInput
+        autoFocus
         id="command-input"
         type="text"
         value={command}

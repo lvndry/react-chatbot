@@ -16,7 +16,3 @@ cd react-chatbot
 npm install
 npm start
 ```
-
-# TODO
-
-- Improve design

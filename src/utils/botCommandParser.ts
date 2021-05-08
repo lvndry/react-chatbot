@@ -13,7 +13,7 @@ import {
 export const PenBotParser = async (sender: Contact, command: string) => {
   let [, suffix] = command.split(">");
   suffix = suffix.trim();
-  const message = new Message({ sender, content: "", type: "text" });
+  const message = new Message({ sender, content: "" });
 
   switch (suffix) {
     case "quote":
@@ -38,11 +38,7 @@ export const NewsBotParser = async (sender: Contact, command: string) => {
   let [, suffix] = command.split("@");
   suffix = suffix.trim();
 
-  const message = new Message({
-    sender,
-    content: "",
-    type: "text",
-  });
+  const message = new Message({ sender, content: "" });
 
   switch (suffix) {
     case "headline":
@@ -63,11 +59,7 @@ export const NiceBotParser = async (sender: Contact, command: string) => {
   let [, suffix] = command.split("$");
   suffix = suffix.trim();
 
-  const message = new Message({
-    sender,
-    content: "",
-    type: "text",
-  });
+  const message = new Message({ sender, content: "" });
 
   switch (suffix) {
     case "howareyou":
@@ -106,6 +98,34 @@ export const ImageBotParser = async (sender: Contact, command: string) => {
     default:
       message.content = "Invalid command";
       message.type = "text";
+      return message;
+  }
+};
+
+export const HelpBotParser = async (sender: Contact, command: string) => {
+  const content = `All bots:
+  whoami: All bots tells there names
+Pen Bot:
+  >quote: Gives you an inspiratiional quote
+  >joke: Gives you a (dad) joke
+  >chuck: Gives you a chuck norris joke
+News Bot:
+  @source: Give a news source you can trust
+  @headline: Gives you and headline from french news
+Image Bot:
+  #cat: Gives a cat image
+  #dog: Gives a dog image
+  #art: Gives an artwork
+Nice Bot:
+  $howareyou: Tells you how the bot feels
+  $youloveme: Tells you how much the bot love you
+`;
+
+  const message = new Message({ sender, content });
+
+  switch (command) {
+    case "help":
+    case "man":
       return message;
   }
 };

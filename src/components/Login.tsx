@@ -10,20 +10,14 @@ import { setCurrentContact } from "../store/actions";
 import { colors } from "../utils/colors";
 
 export const Login: React.FC = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
 
   const app = document.getElementById("app");
   app.classList.add("login-app");
-
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      handleSubmit();
-    }
-  };
 
   useEffect(() => {
     if (error !== "") {
@@ -31,8 +25,16 @@ export const Login: React.FC = () => {
     }
   }, [username]);
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   const handleSubmit = () => {
-    if (username !== "") {
+    if (username === "") {
+      setError("Username can't be empty");
+    } else {
       const currentUser = new Contact({
         id: "0",
         name: username,
@@ -46,8 +48,6 @@ export const Login: React.FC = () => {
       app.classList.remove("login-app");
       setUsername("");
       history.push("/");
-    } else {
-      setError("Username can't be empty");
     }
   };
 
@@ -64,7 +64,7 @@ export const Login: React.FC = () => {
       <Button size="large" onClick={handleSubmit} type="ghost" shape="circle">
         &#8250;
       </Button>
-      <div style={{ marginTop: "1em" }}>{error && <Error>{error}</Error>}</div>
+      <ErrorContainer>{error && <Error>{error}</Error>}</ErrorContainer>
     </LoginPage>
   );
 };
@@ -95,6 +95,10 @@ const Input = styled.input`
     box-shadow: 0 0 2pt 1pt #0077b6;
     border: 1px solid #0077b6;
   }
+`;
+
+const ErrorContainer = styled.div`
+  font-size: 1em;
 `;
 
 const Error = styled.span`
