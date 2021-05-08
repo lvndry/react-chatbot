@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "@emotion/styled";
@@ -10,6 +10,8 @@ import { setCurrentContact } from "../store/actions";
 
 export const Login: React.FC = () => {
   const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -18,6 +20,12 @@ export const Login: React.FC = () => {
       handleSubmit();
     }
   };
+
+  useEffect(() => {
+    if (error !== "") {
+      setError("");
+    }
+  }, [username]);
 
   const handleSubmit = () => {
     if (username !== "") {
@@ -29,8 +37,11 @@ export const Login: React.FC = () => {
       });
 
       dispatch(setCurrentContact(currentUser));
-
+      sessionStorage.setItem("currentContact", JSON.stringify(currentUser));
+      setUsername("");
       history.push("/");
+    } else {
+      setError("Username can't be empty");
     }
   };
 
@@ -46,6 +57,7 @@ export const Login: React.FC = () => {
       <Button size="large" onClick={handleSubmit} type="ghost" shape="circle">
         &#8250;
       </Button>
+      <div style={{ marginTop: "1em" }}>{error && <Error>{error}</Error>}</div>
     </LoginPage>
   );
 };
@@ -76,4 +88,8 @@ const Input = styled.input`
     box-shadow: 0 0 2pt 1pt #0077b6;
     border: 1px solid #0077b6;
   }
+`;
+
+const Error = styled.span`
+  color: red;
 `;
