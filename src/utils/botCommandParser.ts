@@ -75,7 +75,7 @@ export const NiceBotParser = async (sender: Contact, command: string) => {
       return message;
     case "youloveme":
       message.content =
-        "Very much! Thanks for making such a good code. You'll have a nice grade for sure";
+        "Very much! Thanks for making such a good code. You'll have a nice grade for sure!";
       return message;
     default:
       message.content = "Invalid command";

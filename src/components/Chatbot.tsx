@@ -6,6 +6,7 @@ import Routes from "./routes";
 import { Bot, Contact, Message } from "../models";
 import { addMessage, setContacts, setCurrentContact } from "../store/actions";
 import { NewMessageContext } from "../context/newMessageContext";
+import { delay } from "../utils/async";
 
 export const Chatbot = () => {
   const dispatch = useDispatch();
@@ -16,19 +17,22 @@ export const Chatbot = () => {
 
     const command = message.content;
     if (command === "help") {
-      const content = `
-All bots:
-whoami: All bots tells there names
+      const content = `All bots:
+  whoami: All bots tells there names
 Nice Bot:
-$howareyou: Tells you how the bot feels
-$youloveme: Tells you how much the bot love you
+  $howareyou: Tells you how the bot feels
+  $youloveme: Tells you how much the bot love you
 Pen Bot:
->quote: Gives you an inspiratiional quote
->joke: Gives you a (dad) joke
->chuck: Gives you a chuck norris joke
+  >quote: Gives you an inspiratiional quote
+  >joke: Gives you a (dad) joke
+  >chuck: Gives you a chuck norris joke
 News Bot:
-@source: Give a news source you can trust
-@headline: Gives you and headline from french news
+  @source: Give a news source you can trust
+  @headline: Gives you and headline from french news
+Image Bot:
+  #cat: Gives a cat image
+  #dog: Gives a dog image
+  #art: Gives an artwork
 `;
 
       const sender = new Contact({
@@ -39,13 +43,17 @@ News Bot:
       });
 
       const helpMessage = new Message({ sender, content });
-      dispatch(addMessage(helpMessage));
+      delay(500).then(() => {
+        dispatch(addMessage(helpMessage));
+      });
     } else {
       contacts.map(async (contact) => {
         if (contact instanceof Bot) {
           const message = await contact.parseCommand(command);
           if (message) {
-            dispatch(addMessage(message));
+            delay(400).then(() => {
+              dispatch(addMessage(message));
+            });
           }
         }
       });

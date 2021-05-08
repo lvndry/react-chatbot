@@ -25,7 +25,7 @@ export const Conversation: React.FC = () => {
       {messages.map((message: Message, index) => {
         return message.sender.name === currentContact.name ? (
           <SentBubble key={message.id}>
-            <MessageHeader>
+            <MessageHeader className="message-header">
               <Avatar
                 src={message.sender.avatar}
                 alt={`${message.sender.name} avatar`}
@@ -40,7 +40,7 @@ export const Conversation: React.FC = () => {
           </SentBubble>
         ) : (
           <ReceivedBubble key={message.id}>
-            <MessageHeader>
+            <MessageHeader className="message-header">
               <Avatar
                 src={message.sender.avatar}
                 alt={`${message.sender.name} avatar`}
@@ -51,12 +51,7 @@ export const Conversation: React.FC = () => {
             </MessageHeader>
             <MessageContent>
               {message.type === "image" ? (
-                <img
-                  alt="image bot"
-                  src={message.content}
-                  width={300}
-                  height={300}
-                />
+                <MessageImage alt="image bot" src={message.content} />
               ) : (
                 <p>{message.content}</p>
               )}
@@ -115,14 +110,25 @@ const ReceivedBubble = styled(MessageBubble)`
 
   float: left;
   clear: both;
+
+  .message-header {
+    margin-bottom: 1em;
+  }
 `;
 
 const MessageContent = styled.div`
   white-space: pre-wrap;
 `;
 
+const MessageImage = styled.img`
+  margin-bottom: 1em;
+  width: 300px;
+  height: 300px;
+`;
+
 const Avatar = styled.img`
   border-radius: 50%;
   width: 80px;
   height: 80px;
+  object-fit: cover;
 `;

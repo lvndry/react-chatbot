@@ -21,7 +21,7 @@ export class Bot extends Contact {
   }
 
   async parseCommand(command: string) {
-    if (command === "whoami") {
+    if (command === "whoareyou") {
       return new Message({
         sender: this,
         content: `Hi my name is ${this.name}`,
