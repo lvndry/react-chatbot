@@ -11,6 +11,8 @@
 ## Getting started
 
 ```
+git clone https://github.com/lvndry/react-chatbot.git
+cd react-chatbot
 npm install
 npm start
 ```
