@@ -10,7 +10,7 @@ export interface IContactState {
 
 const initialState: IContactState = {
   contacts: [],
-  currentContact: new Contact({ id: "", name: "", avatar: "" }),
+  currentContact: new Contact({ id: "", name: "", avatar: "", color: "" }),
 };
 
 export const contactReducer = (

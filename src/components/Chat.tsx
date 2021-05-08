@@ -15,7 +15,7 @@ export const Chat: React.FC = () => {
 
 const ChatWrapper = styled.div`
   position: relative;
-  height: auto;
+  height: 89vh;
   margin: auto;
   padding: 18px 18px;
   background: #e29494;

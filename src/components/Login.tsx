@@ -7,6 +7,7 @@ import { Button as AntdButton } from "antd";
 import { Contact } from "../models";
 
 import { setCurrentContact } from "../store/actions";
+import { colors } from "../utils/colors";
 
 export const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -35,6 +36,7 @@ export const Login: React.FC = () => {
       const currentUser = new Contact({
         id: "0",
         name: username,
+        color: colors[0],
         avatar:
           "https://cdn.dribbble.com/users/722835/screenshots/4082720/bot_icon.gif",
       });

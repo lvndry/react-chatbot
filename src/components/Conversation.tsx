@@ -24,7 +24,7 @@ export const Conversation: React.FC = () => {
     <Container id="conversation-container">
       {messages.map((message: Message, index) => {
         return message.sender.name === currentContact.name ? (
-          <SentBubble key={message.id}>
+          <SentBubble color={message.sender.color} key={message.id}>
             <MessageHeader className="message-header">
               <Avatar
                 src={message.sender.avatar}
@@ -39,7 +39,7 @@ export const Conversation: React.FC = () => {
             </MessageContent>
           </SentBubble>
         ) : (
-          <ReceivedBubble key={message.id}>
+          <ReceivedBubble color={message.sender.color} key={message.id}>
             <MessageHeader className="message-header">
               <Avatar
                 src={message.sender.avatar}
@@ -65,7 +65,7 @@ export const Conversation: React.FC = () => {
 
 const Container = styled.div`
   overflow: auto;
-  max-height: 85%;
+  max-height: 90%;
   height: calc(100vh - 127px);
   padding: 16px;
 `;
@@ -106,7 +106,7 @@ const MessageHeader = styled.span`
 `;
 
 const SentBubble = styled(MessageBubble)`
-  background-color: #1982fc;
+  background-color: ${(props) => props.color};
   float: right;
   clear: both;
 
@@ -118,7 +118,7 @@ const SentBubble = styled(MessageBubble)`
 `;
 
 const ReceivedBubble = styled(MessageBubble)`
-  background-color: #8e8e93;
+  background-color: ${(props) => props.color};
 
   float: left;
   clear: both;
