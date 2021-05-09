@@ -118,7 +118,7 @@ Image Bot:
   #art: Gives an artwork
 Nice Bot:
   $howareyou: Tells you how the bot feels
-  $youloveme: Tells you how much the bot love you
+  $youloveme: Tells you how much the bot loves you
 `;
 
   const message = new Message({ sender, content });

@@ -22,7 +22,7 @@ export class Bot extends Contact {
   }
 
   async parseCommand(command: string) {
-    if (command === "whoareyou") {
+    if (command === "whoareyou" && this.id !== "5") {
       return new Message({
         sender: this,
         content: `Hi my name is ${this.name}`,

@@ -10,6 +10,7 @@
   "license": "ISC",
   "homepage": "",
   "scripts": {
+    "postinstall": "npm run decrypt",
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production",
     "encrypt": "secure-env .env",
