@@ -1,7 +1,7 @@
 # React Chatbot
 
 # Content of the project
-- 3 bots
+- 4 bots
 - All bots respond to the command `whoami` and `help`
 - Pen bot can get a quote or a joke and chuck Norris
 - News bot gives latest headlines and trusted sources
