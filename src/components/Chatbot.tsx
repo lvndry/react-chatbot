@@ -21,10 +21,10 @@ export const Chatbot = () => {
     const command = message.content;
 
     bots.map((bot) => {
-      bot.parseCommand(command).then((message) => {
-        if (message) {
+      bot.parseCommand(command).then((response) => {
+        if (response) {
           delay(450).then(() => {
-            dispatch(addMessage(message));
+            dispatch(addMessage(response));
           });
         }
       });

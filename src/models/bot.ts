@@ -32,13 +32,10 @@ export class Bot extends Contact {
       if (prefix === this.prefix) {
         switch (prefix) {
           case "$":
-            // do nice bot stuff
             return NiceBotParser(this, command);
           case ">":
-            // do pen bot stuff
             return PenBotParser(this, command);
           case "@":
-            // do popcorn stuff
             return NewsBotParser(this, command);
           case "#":
             return ImageBotParser(this, command);

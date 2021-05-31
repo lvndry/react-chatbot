@@ -96,7 +96,7 @@ const MessageBubble = styled.div`
     }
   }
 
-  animation: scaleIn 0.5s ease-in-out;
+  animation: scaleIn 0.45s ease-in-out;
 `;
 
 const MessageHeader = styled.span`
