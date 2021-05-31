@@ -5,16 +5,29 @@
   "author": "lvndry",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/lvndry/react-chatbot"
   },
   "license": "ISC",
-  "homepage": "",
   "scripts": {
     "postinstall": "npm run decrypt",
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production",
     "encrypt": "secure-env .env",
     "decrypt": "node decrypt.js"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "antd": "^4.15.4",
+    "axios": "^0.21.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
+    "typesafe-actions": "^5.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
@@ -47,19 +60,5 @@
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
-    "antd": "^4.15.4",
-    "axios": "^0.21.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
-    "redux": "^4.1.0",
-    "redux-devtools-extension": "^2.13.9",
-    "redux-thunk": "^2.3.0",
-    "typesafe-actions": "^5.1.0"
   }
 }

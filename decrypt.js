@@ -1,5 +1,4 @@
 const fs = require("fs");
-// eslint-disable-next-line import/no-extraneous-dependencies
 const secureEnv = require("secure-env");
 
 const destFile = ".env";
